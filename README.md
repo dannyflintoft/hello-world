@@ -1,4 +1,2 @@
-# hello-world
-testing how to create a repository
-
-eggs are tasty
+# Test Code Repository
+Test Code Repository before editing the shared version.
