@@ -1,1 +1,48 @@
-Test
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_code_issued_2016
+WHERE is_duplicate=FALSE                            -- Removes Duplicate Engagements
+AND platform != 7                                   -- Removes Email Platform
+                          
+UNION ALL 
+                          
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_code_issued_2017
+WHERE is_duplicate=FALSE                            -- Removes Duplicate Engagements
+AND platform != 7                                   -- Removes Email Platform
+                          
+UNION ALL 
+                          
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_code_issued_2018
+WHERE is_duplicate=FALSE                            -- Removes Duplicate Engagements
+AND platform != 7                                   -- Removes Email Platform
+                          
+UNION ALL
+                          
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_perk_visit_2016
+WHERE (customer_id != 'E0E14494-8D5E-4454-AC80-256E51983DB6' OR (platform  IN (1, 2, 6, 17)))   -- Removes any Apple Music Engagement that don't come via UNiDAYS Channels
+AND platform != 7                                   -- Removes Email Platform
+AND perk_type = 2                                   -- Specifies Perk_type as URL based (visit)    
+                          
+UNION ALL
+                          
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_perk_visit_2017
+WHERE (customer_id != 'E0E14494-8D5E-4454-AC80-256E51983DB6' OR (platform  IN (1, 2, 6, 17)))   -- Removes any Apple Music Engagement that don't come via UNiDAYS Channels
+AND platform != 7                                   -- Removes Email Platform
+AND perk_type = 2                                   -- Specifies Perk_type as URL based (visit)
+                     
+UNION ALL 
+                          
+SELECT student_id
+      ,engagement_date::date as engagement_date     -- casts engagement date time as date
+FROM production.online_perk_visit_2018
+WHERE (customer_id != 'E0E14494-8D5E-4454-AC80-256E51983DB6' OR (platform  IN (1, 2, 6, 17)))   -- Removes any Apple Music Engagement that don't come via UNiDAYS Channels
+AND platform != 7                                   -- Removes Email Platform
+AND perk_type = 2                                   -- Specifies Perk_type as URL based (visit)    
